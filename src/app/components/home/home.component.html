@@ -1,0 +1,96 @@
+<div *ngIf="userDetails.joiningFees; else joiningFeesForm">
+  <div class="row p-0 m-0">
+    <div
+      [class.showSideBar]="showBurger"
+      class="col-lg-2 p-0 m-0 sidebarSection"
+      style="overflow-y: hidden; flex: 1; min-height: 100vh"
+    >
+      <div
+        class="sidebar"
+        style="overflow-y: hidden; flex: 1; min-height: 100vh"
+      >
+        <h1 class="text-center py-3">Finance</h1>
+        <div class="navLinks">
+          <div routerLink="/home/dashboard" routerLinkActive="selectedBox">
+            Dashboard
+          </div>
+          <div routerLink="/home/products" routerLinkActive="selectedBox">
+            Products
+          </div>
+          <div routerLink="/home/transactions">Transactions</div>
+          <div routerLink="/home/orderHistory" routerLinkActive="selectedBox">
+            Orders History
+          </div>
+          <div routerLink="/home/EmiPending" routerLinkActive="selectedBox">
+            Pending EMIs
+          </div>
+          <hr />
+          <button
+            class="btn btn-danger mt-3 absolute bottom-0 logoutbtn"
+            style="background-color: #f05454"
+            (click)="onLogout()"
+          >
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-10 m-0 p-0">
+      <nav
+        class="navbar navbar-dark bg-dark px-5"
+        style="
+          background-color: #f5f5f5 !important;
+          z-index: 20;
+          cursor: pointer;
+        "
+      >
+        <div
+          [class.show]="showBurger"
+          class="menuButton"
+          (click)="handleBurger()"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <a class="navbar-brand text-white invisible">JWT Auth System</a>
+        <div class="headerPill">Hello, {{ userDetails?.fullName }}</div>
+      </nav>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<ng-template #joiningFeesForm>
+  <div class="loginForm">
+    <div class="LoginShadow">
+      <h1 class="text-center">Pay Joining Fees of 10000</h1>
+
+      <div style="width: 100%">
+        <form
+          #form="ngForm"
+          class="mb-4"
+          autocomplete="off"
+          (submit)="onSubmit(form)"
+        >
+          <div class="InputField">
+            <input
+              #UserName="ngModel"
+              name="joiningFeesAmount"
+              placeholder="Amount"
+              [(ngModel)]="formModel.joiningFeesAmount"
+              required
+              disabled
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group w-full">
+              <button type="submit" class="submitBtn" [disabled]="form.invalid">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

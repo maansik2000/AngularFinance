@@ -1,0 +1,103 @@
+.creditCard {
+  position: relative;
+  background: linear-gradient(-125deg, #1d3349, #06121e 55%);
+  min-height: 250px;
+  border-radius: 12px;
+  margin: 20px;
+  .header {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background: linear-gradient(
+      to right,
+      #bf953f,
+      #fcf6ba,
+      #b38728,
+      #fbf5b7,
+      #aa771c
+    );
+  }
+}
+
+.viewAllButton {
+  background-color: rgba(82, 167, 236, 0.436);
+  padding: 5px 12px;
+  border: 1px solid rgb(82, 167, 236);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cardNumber {
+  color: white;
+  margin-top: 45px;
+  margin-left: 45px;
+}
+
+.cardHolderValues {
+  color: silver;
+  .h4 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.bottomValue {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.AmountCard {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  min-height: 250px;
+  border-radius: 12px;
+  margin: 20px;
+  padding: 20px 40px;
+  background-color: #b2a4ff66;
+  border: 1px solid #b2a4ff;
+}
+
+.OrdersTable {
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  padding: 20px 40px;
+}
+
+table {
+  thead tr {
+    background-color: rgb(223, 223, 223);
+    border-radius: 12px;
+    th {
+      padding: 12px;
+    }
+  }
+  thead tr:first-child th:first-child {
+    border-top-left-radius: 10px !important;
+  }
+  thead tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+  }
+  tbody {
+    tr {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #75cef16c;
+      }
+    }
+    border: 1px solid rgb(223, 223, 223);
+    tr td,
+    tr th {
+      padding: 20px;
+    }
+  }
+}
