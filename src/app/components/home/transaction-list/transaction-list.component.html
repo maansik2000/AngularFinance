@@ -1,0 +1,59 @@
+<div class="customTable m-5">
+  <h1 class="mb-3">All Transactions</h1>
+  <div class="SearchField">
+    <div>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="inputField">
+      <input
+        type="text"
+        placeholder="Enter username, email and full name to Search"
+        name="search"
+        [(ngModel)]="searchUserValue"
+        (ngModelChange)="SearchUser()"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      *ngFor="
+        let item of data.transactionHistory
+          | paginate: { itemsPerPage: 5, currentPage: paginationNumber2 }
+      "
+    >
+      <div class="transactionBox">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4>{{ item.productName }}</h4>
+          <h4 class="headerPill">
+            <span>$ {{ item.amountPaid }}</span>
+          </h4>
+        </div>
+        <h6>
+          Transaction Date :
+          {{
+            item.transactionDate.substring(
+              0,
+              item.transactionDate.indexOf("T") + 0
+            )
+          }}
+        </h6>
+
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <h6 style="color: grey">
+            Transaction Id :
+            {{ item.transactionId }}
+          </h6>
+          <span class="headerPill">
+            <span>Status: {{ item.tansactionStatus }}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <pagination-controls
+        (pageChange)="paginationNumber2 = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>
