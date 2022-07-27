@@ -29,6 +29,7 @@ export interface orderHistory {
   productId: number;
   productName: string;
   transactionId: string;
+  productImg: string;
 }
 
 export interface TransactionHistory {

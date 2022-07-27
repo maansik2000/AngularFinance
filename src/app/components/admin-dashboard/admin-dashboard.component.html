@@ -52,7 +52,7 @@
         />
       </div>
     </div>
-    <div>
+    <div class="table-responsive">
       <table class="table">
         <thead class="thead-light">
           <tr>
@@ -66,7 +66,12 @@
           <tr
             *ngFor="
               let item of res.adminList
-                | paginate: { itemsPerPage: 5, currentPage: paginationNumber1 }
+                | paginate
+                  : {
+                      id: 'pagination1',
+                      itemsPerPage: 5,
+                      currentPage: paginationNumber1
+                    }
             "
           >
             <th style="width: 30%" scope="row">{{ item.id }}</th>
@@ -77,7 +82,8 @@
         </tbody>
         <div>
           <pagination-controls
-            (pageChange)="paginationNumber = $event"
+            id="pagination1"
+            (pageChange)="paginationNumber1 = $event"
           ></pagination-controls>
         </div>
       </table>
@@ -100,7 +106,7 @@
         />
       </div>
     </div>
-    <div>
+    <div class="table-responsive">
       <table class="table">
         <thead class="thead-light">
           <tr>
@@ -116,7 +122,12 @@
           <tr
             *ngFor="
               let item of res.userList
-                | paginate: { itemsPerPage: 5, currentPage: paginationNumber2 }
+                | paginate
+                  : {
+                      id: 'pagination2',
+                      itemsPerPage: 5,
+                      currentPage: paginationNumber2
+                    }
             "
             (click)="getDetails(item.userid)"
           >
@@ -128,9 +139,10 @@
             <td>{{ item.createdAt }}</td>
           </tr>
         </tbody>
-        <div>
+        <div style="width: 300px !important">
           <pagination-controls
-            (pageChange)="paginationNumber = $event"
+            id="pagination2"
+            (pageChange)="paginationNumber2 = $event"
           ></pagination-controls>
         </div>
       </table>

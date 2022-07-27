@@ -43,7 +43,11 @@ export class HomeComponent implements OnInit {
   }
 
   onLogout() {
+    console.log('heello');
     localStorage.removeItem('token');
+    localStorage.removeItem('fullName');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('email');
     this.router.navigate(['/user/login']);
   }
 

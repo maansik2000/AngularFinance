@@ -1,0 +1,123 @@
+.customTable {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  padding: 20px 40px;
+}
+
+table {
+  thead tr {
+    background-color: rgb(223, 223, 223);
+    border-radius: 12px;
+    th {
+      padding: 12px;
+    }
+  }
+  thead tr:first-child th:first-child {
+    border-top-left-radius: 10px !important;
+  }
+  thead tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+  }
+  tbody {
+    tr {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #75cef16c;
+      }
+    }
+    border: 1px solid rgb(223, 223, 223);
+    tr td,
+    tr th {
+      padding: 20px;
+    }
+  }
+}
+
+.SearchField {
+  display: flex;
+
+  align-items: center;
+  width: 50%;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  .inputField {
+    width: 100%;
+    input {
+      color: rgb(78, 78, 78);
+      flex: 1;
+      width: 100%;
+      border: none;
+      padding: 5px 20px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+.headerPill {
+  background-color: rgba(82, 167, 236, 0.436);
+  padding: 5px 12px;
+  border: 1px solid rgb(82, 167, 236);
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgb(43, 41, 161);
+}
+
+.transactionBox {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 30px 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.headerPillDanger {
+  background-color: rgba(40, 238, 73, 0.436);
+  padding: 5px 12px;
+  border: 1px solid rgb(40, 238, 73);
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgb(8, 105, 24);
+}
+
+.headerPillDanger2 {
+  background-color: rgba(255, 0, 0, 0.436);
+  padding: 5px 12px;
+  border: 1px solid rgb(255, 0, 0);
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgb(92, 3, 3);
+}
+
+.amountBox {
+  background-color: rgba(40, 238, 73, 0.436);
+  padding: 5px 12px;
+  border: 1px solid rgb(40, 238, 73);
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgb(8, 105, 24);
+}
+
+.responsiveStyle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 992px) {
+  .responsiveStyle {
+    display: block;
+  }
+  .headerPill {
+    width: 100%;
+  }
+  .headerPillDanger {
+    width: 100%;
+  }
+}

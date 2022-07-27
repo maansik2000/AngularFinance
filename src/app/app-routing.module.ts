@@ -14,8 +14,10 @@ import { OrderListComponent } from './components/home/order-list/order-list.comp
 import { ProductDetailsComponent } from './components/home/product-details/product-details.component';
 import { ProductListComponent } from './components/home/product-list/product-list.component';
 import { TransactionListComponent } from './components/home/transaction-list/transaction-list.component';
+import { ForgetPasswordComponent } from './components/users/forget-password/forget-password.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { RegistrationComponent } from './components/users/registration/registration.component';
+import { ResetPasswordComponent } from './components/users/reset-password/reset-password.component';
 import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
@@ -28,6 +30,8 @@ const routes: Routes = [
     children: [
       { path: 'registration', component: RegistrationComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'forget-password', component: ForgetPasswordComponent },
+      { path: 'reset-password', component: ResetPasswordComponent },
     ],
   },
   { path: 'admin/login', component: AdminLoginComponent },
