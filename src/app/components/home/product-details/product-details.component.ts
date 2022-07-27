@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Products } from 'src/app/models/product';
@@ -10,7 +11,7 @@ import { UserPortalService } from 'src/app/Services/user-portal.service';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  productsDetails: Products;
+  productsDetails;
   productId: number;
   constructor(
     private router: Router,
@@ -19,12 +20,15 @@ export class ProductDetailsComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  formModel = {
+    emiDuration: '',
+  };
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'));
       this.productId = id;
       this.service.getProductDetails(id).subscribe(
-        (res: Products) => {
+        (res) => {
           this.productsDetails = res;
           console.log(res);
         },
@@ -33,5 +37,8 @@ export class ProductDetailsComponent implements OnInit {
         }
       );
     });
+  }
+  onSubmit(formModel: NgForm) {
+    console.log(formModel.value);
   }
 }

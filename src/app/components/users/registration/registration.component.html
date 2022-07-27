@@ -11,7 +11,11 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group required inputField">
-              <input placeholder="Email*" formControlName="Email" />
+              <input
+                placeholder="Email*"
+                formControlName="Email"
+                type="email"
+              />
               <label
                 class="text-danger"
                 *ngIf="
@@ -19,6 +23,14 @@
                   service.formModel.get('Email').errors?.required
                 "
                 >Email address is required</label
+              >
+              <label
+                class="text-danger"
+                *ngIf="
+                  service.formModel.get('Email').touched &&
+                  service.formModel.get('Email').invalid
+                "
+                >Enter Valid Email</label
               >
             </div>
           </div>
@@ -254,7 +266,9 @@
                 formControlName="CardType"
                 aria-label="Default select example"
               >
-                <option selected>Open this select menu</option>
+                <option selected disabled value="">
+                  Open this select menu
+                </option>
                 <option value="Premium">Premium</option>
                 <option value="Titanium">Titanium</option>
               </select>

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserDashboardModel } from 'src/app/models/user-dashboard-model';
 import { UserPortalService } from 'src/app/Services/user-portal.service';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 @Component({
   selector: 'app-order-list',
@@ -20,7 +22,7 @@ export class OrderListComponent implements OnInit {
     private service: UserPortalService,
     private toastr: ToastrService
   ) {}
-
+  date = moment();
   ngOnInit() {
     this.service.getUserDashboardDetails().subscribe(
       (res: UserDashboardModel) => {
@@ -32,6 +34,7 @@ export class OrderListComponent implements OnInit {
     );
     console.log(this.data.orderHistory);
   }
+
   SearchUser() {
     if (this.searchUserValue == '') {
       this.ngOnInit();

@@ -35,15 +35,21 @@
       <div class="AmountCard">
         <div class="row">
           <div class="col-md-4">
-            <h1>${{ data.userCardDetails.totalCredits }}</h1>
+            <h5 style="word-break: break-all">
+              ${{ data.userCardDetails.totalCredits }}
+            </h5>
             <p>Total Credits</p>
           </div>
           <div class="col-md-4">
-            <h1>${{ data.userCardDetails.remainingAmount }}</h1>
+            <h5 style="word-break: break-all">
+              ${{ data.userCardDetails.remainingAmount }}
+            </h5>
             <p>Remaining Credits</p>
           </div>
           <div class="col-md-4">
-            <h1>${{ data.userCardDetails.amountSpent }}</h1>
+            <h5 style="word-break: break-all">
+              ${{ data.userCardDetails.amountSpent }}
+            </h5>
             <p>Credits Spent</p>
           </div>
         </div>

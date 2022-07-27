@@ -11,7 +11,13 @@ export class UserService {
 
   formModel = this.fb.group({
     UserName: ['', Validators.required],
-    Email: ['', Validators.required],
+    Email: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern('[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+'),
+      ],
+    ],
     FullName: ['', Validators.required],
     DateOfBirth: ['', Validators.required],
     BankName: ['', Validators.required],
@@ -21,6 +27,23 @@ export class UserService {
     AccountNumber: ['', Validators.required],
     CardType: ['', Validators.required],
     PhoneNumber: ['', [Validators.required, Validators.minLength(10)]],
+    Passwords: this.fb.group(
+      {
+        Password: ['', [Validators.required, Validators.minLength(4)]],
+        ConfirmPassword: ['', Validators.required],
+      },
+      { validator: this.comparePasswords }
+    ),
+  });
+
+  formModelReset = this.fb.group({
+    Email: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$'),
+      ],
+    ],
     Passwords: this.fb.group(
       {
         Password: ['', [Validators.required, Validators.minLength(4)]],
@@ -92,5 +115,21 @@ export class UserService {
       this.BaseURI + `/UserProfile/PostJoiningFees/${id}`,
       form
     );
+  }
+
+  forgetPassword(form) {
+    return this.http.post(
+      this.BaseURI + `/User/forgetPassword?email=${form.email}`,
+      form
+    );
+  }
+
+  resetPassword(token) {
+    var body = {
+      email: this.formModelReset.value.Email,
+      token: token,
+      password: this.formModelReset.value.Passwords.Password,
+    };
+    return this.http.post(this.BaseURI + `/User/resetPassword`, body);
   }
 }

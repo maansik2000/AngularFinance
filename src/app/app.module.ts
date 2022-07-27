@@ -28,6 +28,10 @@ import { UserDetailsComponent } from './components/home/user-details/user-detail
 import { TransactionListComponent } from './components/home/transaction-list/transaction-list.component';
 import { OrderListComponent } from './components/home/order-list/order-list.component';
 import { EmiPendingListComponent } from './components/home/emi-pending-list/emi-pending-list.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { NgHttpLoaderModule } from 'ng-http-loader';
+import { ForgetPasswordComponent } from './components/users/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './components/users/reset-password/reset-password.component';
 
 @NgModule({
   imports: [
@@ -39,6 +43,7 @@ import { EmiPendingListComponent } from './components/home/emi-pending-list/emi-
     HttpClientModule,
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
+    NgHttpLoaderModule.forRoot(),
     ToastrModule.forRoot({
       progressBar: true,
     }),
@@ -65,6 +70,9 @@ import { EmiPendingListComponent } from './components/home/emi-pending-list/emi-
     OrderListComponent,
     EmiPendingListComponent,
     DashboardComponent,
+    LoaderComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent,
   ],
 
   providers: [
