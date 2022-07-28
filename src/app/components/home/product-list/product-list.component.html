@@ -1,4 +1,7 @@
-<div class="container mt-3 mb-3">
+<div
+  class="container mt-3 mb-3"
+  *ngIf="isCardActivated == 'Activated'; else elseBlock"
+>
   <main class="grid">
     <article
       *ngFor="let item of data"

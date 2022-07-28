@@ -34,6 +34,5 @@ export class DashboardComponent implements OnInit {
         this.toastr.error(err.error.message);
       }
     );
-    console.log(this.data.transactionHistory);
   }
 }
