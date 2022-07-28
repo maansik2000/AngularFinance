@@ -11,6 +11,7 @@ import { UserPortalService } from 'src/app/Services/user-portal.service';
 })
 export class ProductListComponent implements OnInit {
   data: Products[];
+  isCardActivated: string;
   constructor(
     private router: Router,
     private service: UserPortalService,
@@ -18,6 +19,7 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isCardActivated = localStorage.getItem('cardStatus');
     this.service.getAllProducts().subscribe(
       (res: Products[]) => {
         this.data = res;

@@ -20,4 +20,14 @@ export class UserPortalService {
     return this.http.get(this.BaseURI + `/Products/GetProductDetails/${id}`);
   }
 
+  buyProduct(body) {
+    return this.http.post(this.BaseURI + '/UserProfile/BuyProduct', body);
+  }
+
+  payInstallments(body) {
+    return this.http.post(
+      this.BaseURI + '/UserProfile/PayEmiInstallment',
+      body
+    );
+  }
 }

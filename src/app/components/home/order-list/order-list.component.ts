@@ -32,7 +32,7 @@ export class OrderListComponent implements OnInit {
         this.toastr.error(err.error.message);
       }
     );
-    console.log(this.data.orderHistory);
+  
   }
 
   SearchUser() {

@@ -29,6 +29,13 @@ export class HomeComponent implements OnInit {
     this.service.getUserProfile().subscribe(
       (res) => {
         this.userDetails = res;
+        localStorage.setItem('fullName', this.userDetails.data.fullName);
+        localStorage.setItem('userId', this.userDetails.data.userId);
+        localStorage.setItem('email', this.userDetails.data.email);
+        localStorage.setItem(
+          'cardStatus',
+          this.userDetails.data.isCardActivated
+        );
       },
       (err) => {
         this.toastr.error(err.error.message);
@@ -36,18 +43,14 @@ export class HomeComponent implements OnInit {
     );
 
     this.currentRoute = this.router.url;
-    localStorage.setItem('fullName', this.userDetails.fullName);
-    localStorage.setItem('userId', this.userDetails.userId);
-    localStorage.setItem('email', this.userDetails.email);
-    console.log(this.currentRoute);
   }
 
   onLogout() {
-    console.log('heello');
     localStorage.removeItem('token');
     localStorage.removeItem('fullName');
     localStorage.removeItem('userId');
     localStorage.removeItem('email');
+    localStorage.removeItem('cardStatus');
     this.router.navigate(['/user/login']);
   }
 
@@ -56,15 +59,18 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.service.postJoiningFees(this.userDetails.userId, form.value).subscribe(
-      (res) => {
-        console.log(res);
-        this.ngOnInit();
-        this.toastr.success('Joining Fees Submitted');
-      },
-      (err) => {
-        this.toastr.error(err.error.message);
-      }
-    );
+    console.log(form.value);
+    this.service
+      .postJoiningFees(this.userDetails.data.userId, form.value)
+      .subscribe(
+        (res) => {
+          console.log(res);
+          this.ngOnInit();
+          this.toastr.success('Joining Fees Submitted');
+        },
+        (err) => {
+          this.toastr.error(err.error.message);
+        }
+      );
   }
 }

@@ -47,4 +47,24 @@ export class EmiPendingListComponent implements OnInit {
       });
     }
   }
+
+  payNow(item) {
+    var body = {
+      orderId: item.orderId,
+      userId: item.userid,
+      emiId: item.emiId,
+      transactionId: item.transactionId,
+    };
+
+    this.service.payInstallments(body).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.ngOnInit();
+        this.toastr.success(res.message);
+      },
+      (err) => {
+        this.toastr.error(err.error.message);
+      }
+    );
+  }
 }

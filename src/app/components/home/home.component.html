@@ -1,4 +1,9 @@
-<div *ngIf="userDetails.joiningFees; else joiningFeesForm">
+<div
+  *ngIf="
+    userDetails.data && userDetails.data.joiningFees;
+    else userDetails.data && joiningFeesForm
+  "
+>
   <div class="row p-0 m-0">
     <div
       [class.showSideBar]="showBurger"
@@ -54,7 +59,7 @@
           <i class="fa-solid fa-bars"></i>
         </div>
         <a class="navbar-brand text-white invisible">JWT Auth System</a>
-        <div class="headerPill">Hello, {{ userDetails?.fullName }}</div>
+        <div class="headerPill">Hello, {{ userDetails?.data?.fullName }}</div>
       </nav>
       <router-outlet></router-outlet>
     </div>

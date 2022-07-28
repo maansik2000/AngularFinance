@@ -13,6 +13,7 @@ import { UserPortalService } from 'src/app/Services/user-portal.service';
 export class ProductDetailsComponent implements OnInit {
   productsDetails;
   productId: number;
+  userId: string;
   constructor(
     private router: Router,
     public service: UserPortalService,
@@ -21,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   formModel = {
-    emiDuration: '',
+    EmiDuration: '',
   };
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -39,6 +40,23 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
   onSubmit(formModel: NgForm) {
-    console.log(formModel.value);
+    this.userId = localStorage.getItem('userId');
+
+    var body = {
+      userId: this.userId,
+      productId: this.productId,
+      emiPeriod: formModel.value.EmiDuration,
+    };
+
+    this.service.buyProduct(body).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.router.navigateByUrl('/home/dashboard');
+        this.toastr.success(res.message);
+      },
+      (err) => {
+        this.toastr.error(err.error.message);
+      }
+    );
   }
 }
