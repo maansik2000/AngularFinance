@@ -55,4 +55,10 @@ export class AdminService {
     };
     return this.http.put(this.BaseURI + `/Admin/ActivateAccount/${id}`, body);
   }
+
+  deleteUser(id) {
+    return this.http.post(this.BaseURI + `/Admin/DeleteUser/${id}`, {
+      data: id,
+    });
+  }
 }

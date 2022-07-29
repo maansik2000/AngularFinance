@@ -107,7 +107,7 @@
       </div>
     </div>
     <div class="table-responsive">
-      <table class="table">
+      <table class="table customTableMy">
         <thead class="thead-light">
           <tr>
             <th scope="col">User Id</th>
@@ -116,6 +116,8 @@
             <th scope="col">Username</th>
             <th scope="col">Activation Status</th>
             <th scope="col">Created At</th>
+            <th scope="col">Is Activated</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -129,23 +131,49 @@
                       currentPage: paginationNumber2
                     }
             "
-            (click)="getDetails(item.userid)"
           >
-            <th style="width: 20%" scope="row">{{ item.userid }}</th>
+            <th style="width: 50% !important" scope="row">
+              {{ item.userid }}
+            </th>
             <td>{{ item.fullName }}</td>
             <td>{{ item.email }}</td>
             <td>{{ item.username }}</td>
             <td>{{ item.isActivated }}</td>
-            <td>{{ item.createdAt }}</td>
+            <td>
+              {{ item.createdAt.substring(0, item.createdAt.indexOf("T") + 0) }}
+            </td>
+            <td>
+              {{ item.isActivatedUser }}
+            </td>
+            <td>
+              <div
+                style="width: 200px"
+                class="d-flex justify-content-center align-items-center"
+              >
+                <button
+                  (click)="getDetails(item.userid)"
+                  class="btn btn-primary"
+                >
+                  Activate
+                </button>
+                <div style="margin-left: 10px"></div>
+                <button
+                  (click)="DeleteUser(item.userid)"
+                  class="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </div>
+            </td>
           </tr>
         </tbody>
-        <div style="width: 300px !important">
-          <pagination-controls
-            id="pagination2"
-            (pageChange)="paginationNumber2 = $event"
-          ></pagination-controls>
-        </div>
       </table>
+    </div>
+    <div style="width: 300px !important; margin-top: 20px">
+      <pagination-controls
+        id="pagination2"
+        (pageChange)="paginationNumber2 = $event"
+      ></pagination-controls>
     </div>
   </div>
 </div>

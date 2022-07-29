@@ -18,8 +18,8 @@ export class AdminDashboardComponent implements OnInit {
   searchValue: string;
   searchUserValue: string;
 
-  paginationNumber1:number = 1; 
-  paginationNumber2:number = 1; 
+  paginationNumber1: number = 1;
+  paginationNumber2: number = 1;
 
   constructor(
     private router: Router,
@@ -73,7 +73,7 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 
-  SearchUser(){
+  SearchUser() {
     if (this.searchUserValue == '') {
       this.ngOnInit();
     } else {
@@ -93,8 +93,20 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 
-  getDetails(id:string){
+  getDetails(id: string) {
     console.log(id);
     this.router.navigate(['/admin/details', id]);
+  }
+  DeleteUser(id) {
+    this.service.deleteUser(id).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.ngOnInit();
+        this.toastr.success(res.message);
+      },
+      (err) => {
+        this.toastr.error(err.error.message);
+      }
+    );
   }
 }
