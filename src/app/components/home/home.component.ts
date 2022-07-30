@@ -14,9 +14,10 @@ export class HomeComponent implements OnInit {
   showBurger: boolean = false;
   isSelected: boolean = false;
   currentRoute = '/home/dashboard';
+  joiningAmount: number = 0;
 
   formModel = {
-    joiningFeesAmount: 10000,
+    joiningFeesAmount: 0,
   };
 
   constructor(
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.service.getUserProfile().subscribe(
-      (res) => {
+      (res: any) => {
         this.userDetails = res;
         localStorage.setItem('fullName', this.userDetails.data.fullName);
         localStorage.setItem('userId', this.userDetails.data.userId);
@@ -36,6 +37,17 @@ export class HomeComponent implements OnInit {
           'cardStatus',
           this.userDetails.data.isCardActivated
         );
+        if (this.userDetails.cardType == 'Premium') {
+          this.joiningAmount = 10000;
+          this.formModel = {
+            joiningFeesAmount: 10000,
+          };
+        } else {
+          this.joiningAmount = 20000;
+          this.formModel = {
+            joiningFeesAmount: 20000,
+          };
+        }
       },
       (err) => {
         this.toastr.error(err.error.message);
@@ -51,7 +63,7 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('userId');
     localStorage.removeItem('email');
     localStorage.removeItem('cardStatus');
-    this.router.navigate(['/user/login']);
+    this.router.navigate(['/']);
   }
 
   handleBurger() {

@@ -49,10 +49,10 @@ table {
     border-top-right-radius: 10px;
   }
   tbody {
-    tr{
+    tr {
       cursor: pointer;
       transition: all 0.3s ease;
-      &:hover{
+      &:hover {
         background-color: #75cef16c;
       }
     }
@@ -86,5 +86,15 @@ table {
         outline: none;
       }
     }
+  }
+}
+
+.customTableMy {
+  width: 100% !important;
+  overflow-x: scroll;
+  th,
+  td {
+    min-width: 200px;
+    text-align: center;
   }
 }

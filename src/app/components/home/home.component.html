@@ -1,7 +1,7 @@
 <div
   *ngIf="
-    userDetails.data && userDetails.data.joiningFees;
-    else userDetails.data && joiningFeesForm
+    userDetails && userDetails.data.joiningFees;
+    else userDetails && joiningFeesForm
   "
 >
   <div class="row p-0 m-0">
@@ -14,7 +14,7 @@
         class="sidebar"
         style="overflow-y: hidden; flex: 1; min-height: 100vh"
       >
-        <h1 class="text-center py-3">Finance</h1>
+        <h1 class="text-center py-3">Credo</h1>
         <div class="navLinks">
           <div routerLink="/home/dashboard" routerLinkActive="selectedBox">
             Dashboard
@@ -69,7 +69,7 @@
 <ng-template #joiningFeesForm>
   <div class="loginForm">
     <div class="LoginShadow">
-      <h1 class="text-center">Pay Joining Fees of 10000</h1>
+      <h1 class="text-center">Pay Joining Fees of {{ joiningAmount }}</h1>
 
       <div style="width: 100%">
         <form
@@ -83,6 +83,7 @@
               #UserName="ngModel"
               name="joiningFeesAmount"
               placeholder="Amount"
+              [value]="joiningAmount"
               [(ngModel)]="formModel.joiningFeesAmount"
               required
               disabled

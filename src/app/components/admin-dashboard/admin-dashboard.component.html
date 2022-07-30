@@ -1,12 +1,21 @@
 <nav class="navbar navbar-dark bg-dark px-5">
-  <a class="navbar-brand text-white">Finance Admin Panel</a>
-  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">
-    Logout
-  </button>
+  <a class="navbar-brand text-white">Credo Admin Panel</a>
+  <div>
+    <button
+      class="btn btn-primary my-2 my-sm-0 mx-2"
+      routerLink="/admin/AddAdmin"
+    >
+      Add Admin Users
+    </button>
+
+    <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">
+      Logout
+    </button>
+  </div>
 </nav>
 
 <div class="container mt-5" *ngIf="userDetails && res">
-  <h1 class="mb-5">Hello, {{ userDetails.fullname }}</h1>
+  <h1 class="mb-5">Hello, {{ userDetails.res.fullname }}</h1>
   <main class="grid mb-5">
     <article style="background-color: #a0d9959a">
       <div class="text">
@@ -107,15 +116,17 @@
       </div>
     </div>
     <div class="table-responsive">
-      <table class="table">
+      <table class="table customTableMy">
         <thead class="thead-light">
           <tr>
             <th scope="col">User Id</th>
             <th scope="col">Full Name</th>
             <th scope="col">Email</th>
             <th scope="col">Username</th>
-            <th scope="col">Activation Status</th>
+            <th scope="col">Card Activation Status</th>
             <th scope="col">Created At</th>
+            <th scope="col">Deleted Account</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -129,23 +140,51 @@
                       currentPage: paginationNumber2
                     }
             "
-            (click)="getDetails(item.userid)"
           >
-            <th style="width: 20%" scope="row">{{ item.userid }}</th>
+            <th style="width: 50% !important" scope="row">
+              {{ item.userid }}
+            </th>
             <td>{{ item.fullName }}</td>
             <td>{{ item.email }}</td>
             <td>{{ item.username }}</td>
             <td>{{ item.isActivated }}</td>
-            <td>{{ item.createdAt }}</td>
+            <td>
+              {{ item.createdAt.substring(0, item.createdAt.indexOf("T") + 0) }}
+            </td>
+            <td>
+              {{
+                item.isActivatedUser ? "Activated Account" : "Deleted Account"
+              }}
+            </td>
+            <td>
+              <div
+                style="width: 200px"
+                class="d-flex justify-content-center align-items-center"
+              >
+                <button
+                  (click)="getDetails(item.userid)"
+                  class="btn btn-primary"
+                >
+                  Activate
+                </button>
+                <div style="margin-left: 10px"></div>
+                <button
+                  (click)="DeleteUser(item.userid)"
+                  class="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </div>
+            </td>
           </tr>
         </tbody>
-        <div style="width: 300px !important">
-          <pagination-controls
-            id="pagination2"
-            (pageChange)="paginationNumber2 = $event"
-          ></pagination-controls>
-        </div>
       </table>
+    </div>
+    <div style="width: 300px !important; margin-top: 20px">
+      <pagination-controls
+        id="pagination2"
+        (pageChange)="paginationNumber2 = $event"
+      ></pagination-controls>
     </div>
   </div>
 </div>

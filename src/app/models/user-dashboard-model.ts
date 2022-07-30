@@ -30,6 +30,7 @@ export interface orderHistory {
   productName: string;
   transactionId: string;
   productImg: string;
+  emiId: string;
 }
 
 export interface TransactionHistory {

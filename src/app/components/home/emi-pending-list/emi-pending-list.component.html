@@ -67,9 +67,7 @@
           </h4>
           <div *ngIf="!item.isEmiCompleted">
             <button
-              [disabled]="
-                currentDate != moment(item.emiNextDate).format('YYYY-MM-DD')
-              "
+              
               class="btn btn-primary"
               style="width: 100%"
               (click)="payNow(item)"
