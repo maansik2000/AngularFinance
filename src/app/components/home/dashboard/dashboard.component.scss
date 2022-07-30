@@ -1,24 +1,18 @@
 .creditCard {
   position: relative;
-  background: linear-gradient(-125deg, #1d3349, #06121e 55%);
-  min-height: 250px;
-  border-radius: 12px;
+  min-height: 280px;
   margin: 20px;
-  .header {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    padding-top: 12px;
-    padding-left: 12px;
-    padding-right: 12px;
-    background: linear-gradient(
-      to right,
-      #bf953f,
-      #fcf6ba,
-      #b38728,
-      #fbf5b7,
-      #aa771c
-    );
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 12px;
+}
+
+.backgroundGradient2 {
+  background: linear-gradient(251.34deg, #000000 0.36%, #143366 99.76%);
+}
+
+.backgroundGradient1 {
+  background: linear-gradient(251.34deg, #5359dd 0.36%, #711f97 99.76%);
 }
 
 .viewAllButton {
@@ -31,8 +25,6 @@
 
 .cardNumber {
   color: white;
-  margin-top: 45px;
-  margin-left: 45px;
 }
 
 .cardHolderValues {
@@ -43,14 +35,6 @@
   p {
     margin: 0;
   }
-}
-
-.bottomValue {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 25px;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 .AmountCard {

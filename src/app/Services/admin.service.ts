@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserData } from '../models/User-data';
 import { UserDetailsModel } from '../models/user-details-model';
 
@@ -60,5 +60,15 @@ export class AdminService {
     return this.http.post(this.BaseURI + `/Admin/DeleteUser/${id}`, {
       data: id,
     });
+  }
+
+  AddAdmin(form) {
+    var body = {
+      username: form.value.username,
+      email: form.value.username,
+      password: form.value.username,
+      fullName: form.value.username,
+    };
+    return this.http.post(this.BaseURI + `/Admin/Signup/`, body);
   }
 }

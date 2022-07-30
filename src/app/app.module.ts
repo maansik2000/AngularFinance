@@ -33,6 +33,8 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import { ForgetPasswordComponent } from './components/users/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './components/users/reset-password/reset-password.component';
 import { AddProductsComponent } from './components/add-products/add-products.component';
+import { HomebannerComponent } from './components/homebanner/homebanner.component';
+import { AdminCreateComponent } from './components/admin-create/admin-create.component';
 
 @NgModule({
   imports: [
@@ -75,6 +77,8 @@ import { AddProductsComponent } from './components/add-products/add-products.com
     ForgetPasswordComponent,
     ResetPasswordComponent,
     AddProductsComponent,
+    HomebannerComponent,
+    AdminCreateComponent,
   ],
 
   providers: [

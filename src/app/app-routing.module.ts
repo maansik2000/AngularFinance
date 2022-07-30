@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { AdminCreateComponent } from './components/admin-create/admin-create.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminDetailsComponent } from './components/admin-details/admin-details.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
@@ -14,6 +15,7 @@ import { OrderListComponent } from './components/home/order-list/order-list.comp
 import { ProductDetailsComponent } from './components/home/product-details/product-details.component';
 import { ProductListComponent } from './components/home/product-list/product-list.component';
 import { TransactionListComponent } from './components/home/transaction-list/transaction-list.component';
+import { HomebannerComponent } from './components/homebanner/homebanner.component';
 import { ForgetPasswordComponent } from './components/users/forget-password/forget-password.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { RegistrationComponent } from './components/users/registration/registration.component';
@@ -21,7 +23,7 @@ import { ResetPasswordComponent } from './components/users/reset-password/reset-
 import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/user/login', pathMatch: 'full' },
+  { path: '', component: HomebannerComponent },
   { path: 'admin', redirectTo: '/admin/login', pathMatch: 'full' },
   { path: 'home', redirectTo: '/home/dashboard', pathMatch: 'full' },
   {
@@ -38,6 +40,12 @@ const routes: Routes = [
   {
     path: 'admin/dashboard',
     component: AdminDashboardComponent,
+    canActivate: [AuthGuard],
+    data: { permittedRoles: ['Admin'] },
+  },
+  {
+    path: 'admin/AddAdmin',
+    component: AdminCreateComponent,
     canActivate: [AuthGuard],
     data: { permittedRoles: ['Admin'] },
   },
