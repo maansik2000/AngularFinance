@@ -32,6 +32,8 @@ export class TransactionListComponent implements OnInit {
     );
     console.log(this.data.transactionHistory);
   }
+
+  //filtering the table as per the serch value
   SearchUser() {
     if (this.searchUserValue == '') {
       this.ngOnInit();

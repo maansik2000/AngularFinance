@@ -15,17 +15,23 @@ export class AdminCreateComponent implements OnInit {
     private service: AdminService,
     private toastr: ToastrService
   ) {}
+
   formModel = {
     email: '',
     username: '',
     password: 'admin',
     fullName: '',
   };
+
   ngOnInit(): void {}
+
+  //logout Method
   onLogout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/user/login']);
+    this.router.navigate(['/']);
   }
+
+  //submit method for creating the admin User
   onSubmit(form: NgForm) {
     this.service.AddAdmin(form).subscribe(
       (res: any) => {

@@ -14,6 +14,7 @@ export class ProductDetailsComponent implements OnInit {
   productsDetails;
   productId: number;
   userId: string;
+
   constructor(
     private router: Router,
     public service: UserPortalService,
@@ -24,10 +25,11 @@ export class ProductDetailsComponent implements OnInit {
   formModel = {
     EmiDuration: '',
   };
+
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'));
-      this.productId = id;
+      this.productId = id;          //getting the product id from the url and then calling the product details get api
       this.service.getProductDetails(id).subscribe(
         (res) => {
           this.productsDetails = res;
@@ -39,6 +41,7 @@ export class ProductDetailsComponent implements OnInit {
       );
     });
   }
+
   onSubmit(formModel: NgForm) {
     this.userId = localStorage.getItem('userId');
 

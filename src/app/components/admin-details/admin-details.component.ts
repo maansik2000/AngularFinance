@@ -40,7 +40,7 @@ export class AdminDetailsComponent implements OnInit {
       (res: any) => {
         if (res) {
           this.service.formModel.reset();
-          this.toastr.success('The user accounts is activated', 'Successfull');
+          this.toastr.success('The user accounts is activated', 'Successfully');
           this.ngOnInit();
         }
       },
