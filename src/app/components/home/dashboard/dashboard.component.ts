@@ -16,8 +16,8 @@ import { UserPortalService } from 'src/app/Services/user-portal.service';
 export class DashboardComponent implements OnInit {
   data: UserDashboardModel;
 
-  paginationNumber1: number = 1;
-  paginationNumber2: number = 1;
+  paginationNumber1: number = 1;    //pagination numbers
+  paginationNumber2: number = 1;    //pagination numbers
 
   constructor(
     private router: Router,

@@ -6,7 +6,11 @@
 </nav>
 <div class="container mt-5 UserDetailsBox" *ngIf="userDetails">
   <div class="headerBox">
-    <h1>User Details</h1>
+    <div class="d-flex justify-content-between align-items-center">
+      <h1>User Details</h1>
+      <div class="headerPillDanger2">Deleted Account</div>
+    </div>
+
     <hr />
     <div class="row">
       <div class="col-md-6">
@@ -115,7 +119,7 @@
     </div>
   </div>
 
-  <div class="headerBox mt-5">
+  <div class="headerBox mt-5" *ngIf="userDetails.data.isActivateUser">
     <h1>Activate Account</h1>
     <hr />
     <div style="width: 100%">
@@ -194,4 +198,6 @@
       </form>
     </div>
   </div>
+
+  <div class="mb-5"></div>
 </div>

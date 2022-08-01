@@ -7,11 +7,6 @@ import { Spinkit } from 'ng-http-loader';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Finance';
-  spinnerStyle = Spinkit;
-  public companies: any[] = [
-    { id: 0, name: 'Available' },
-    { id: 1, name: 'Ready' },
-    { id: 2, name: 'Started' },
-  ];
+  title = 'Credo';
+  spinnerStyle = Spinkit;     //loader type
 }

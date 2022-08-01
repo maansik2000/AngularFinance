@@ -41,7 +41,10 @@
     <article style="background-color: #ffb4b493">
       <div class="text">
         <h2>{{ res?.deactivatedAccount }}</h2>
-        <h6>Deativated Account <i class="fa-solid fa-arrow-right-long"></i></h6>
+        <h6>
+          Activation Account Request
+          <i class="fa-solid fa-arrow-right-long"></i>
+        </h6>
       </div>
     </article>
   </main>
@@ -123,7 +126,7 @@
             <th scope="col">Full Name</th>
             <th scope="col">Email</th>
             <th scope="col">Username</th>
-            <th scope="col">Card Activation Status</th>
+            <th scope="col">Card Status</th>
             <th scope="col">Created At</th>
             <th scope="col">Deleted Account</th>
             <th scope="col"></th>
@@ -147,7 +150,7 @@
             <td>{{ item.fullName }}</td>
             <td>{{ item.email }}</td>
             <td>{{ item.username }}</td>
-            <td>{{ item.isActivated }}</td>
+            <td>{{ item.isActivated ? "Activated" : "Not Activated" }}</td>
             <td>
               {{ item.createdAt.substring(0, item.createdAt.indexOf("T") + 0) }}
             </td>
@@ -159,7 +162,8 @@
             <td>
               <div
                 style="width: 200px"
-                class="d-flex justify-content-center align-items-center"
+                class="d-flex justify-content-center align-items-start"
+                *ngIf="item.isActivatedUser; else detailsButton"
               >
                 <button
                   (click)="getDetails(item.userid)"
@@ -175,6 +179,15 @@
                   Delete
                 </button>
               </div>
+              <ng-template #detailsButton>
+                <button
+                  (click)="getDetails(item.userid)"
+                  class="btn btn-primary"
+                  style="width: 100%"
+                >
+                  Details
+                </button>
+              </ng-template>
             </td>
           </tr>
         </tbody>

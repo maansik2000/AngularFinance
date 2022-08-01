@@ -8,19 +8,22 @@ import { UserDetailsModel } from '../models/user-details-model';
   providedIn: 'root',
 })
 export class AdminService {
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
-  readonly BaseURI = 'https://localhost:44333/api';
+  constructor(private fb: FormBuilder, private http: HttpClient) {} //injecting dependency
+  readonly BaseURI = 'https://localhost:44333/api'; //backend Url for api
 
+  //get method for getting admin profile
   getAdminProfile() {
     // var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('token')});
     // return this.http.get(this.BaseURI + '/UserProfile', {headers : tokenHeader});
     return this.http.get(this.BaseURI + '/Admin/UserProfile');
   }
 
+  //method for getting AllUsers List
   getAllUserData() {
     return this.http.get(this.BaseURI + '/Admin/getAllUsers');
   }
 
+  //method for geting user Details
   getUserDetails(id: string) {
     return this.http.get(this.BaseURI + `/Admin/GetUserDetails/${id}`);
   }
@@ -37,6 +40,7 @@ export class AdminService {
     ],
   });
 
+  //method for activating the account
   ActivateAccount(id, bankDetails: UserDetailsModel) {
     var body = {
       bankname: bankDetails.data.bankname,
@@ -56,12 +60,14 @@ export class AdminService {
     return this.http.put(this.BaseURI + `/Admin/ActivateAccount/${id}`, body);
   }
 
+  //method for deleting the user
   deleteUser(id) {
     return this.http.post(this.BaseURI + `/Admin/DeleteUser/${id}`, {
       data: id,
     });
   }
 
+  //method for adding admin user
   AddAdmin(form) {
     var body = {
       username: form.value.username,

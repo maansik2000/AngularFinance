@@ -36,6 +36,7 @@ export class EmiPendingListComponent implements OnInit {
     );
   }
 
+  //filtering the table with the search value
   SearchUser() {
     if (this.searchUserValue == '') {
       this.ngOnInit();

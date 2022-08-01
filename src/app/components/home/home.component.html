@@ -59,7 +59,10 @@
           <i class="fa-solid fa-bars"></i>
         </div>
         <a class="navbar-brand text-white invisible">JWT Auth System</a>
-        <div class="headerPill">Hello, {{ userDetails?.data?.fullName }}</div>
+        <div>
+          Hello, {{ userDetails?.data?.fullName }}
+          <img src="../../../assets/hello.png" height="20px" alt="" />
+        </div>
       </nav>
       <router-outlet></router-outlet>
     </div>

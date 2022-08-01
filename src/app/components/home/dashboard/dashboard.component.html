@@ -51,13 +51,14 @@
       *ngIf="data.userCardDetails.cardStatus == 'Activated'"
     >
       <div class="AmountCard">
-        <div class="row">
+        <div class="row amountSection">
           <div class="col-md-4">
             <h5 style="word-break: break-all">
               ${{ data.userCardDetails.totalCredits }}
             </h5>
             <p>Total Credits</p>
           </div>
+
           <div class="col-md-4">
             <h5 style="word-break: break-all">
               ${{ data.userCardDetails.remainingAmount }}
@@ -77,9 +78,7 @@
         </h6>
         <h6>bankName : {{ data.userCardDetails.bankName }}</h6>
         <h6>Card Type : {{ data.userCardDetails.cardType }}</h6>
-        <h6 class="viewAllButton my-3">
-          Card Status : {{ data.userCardDetails.cardStatus }}
-        </h6>
+        <h6>Card Status : {{ data.userCardDetails.cardStatus }}</h6>
       </div>
     </div>
   </div>
@@ -87,7 +86,9 @@
   <div class="OrdersTable">
     <div class="d-flex justify-content-between align-items-center">
       <h1 class="mb-3">Past Orders</h1>
-      <div routerLink="/home/orderHistory" class="viewAllButton">View All</div>
+      <div routerLink="/home/orderHistory" class="viewAllButton">
+        View All ->
+      </div>
     </div>
 
     <div class="table-responsive">
@@ -103,6 +104,7 @@
           </tr>
         </thead>
         <tbody>
+          <!-- adding pagination in the tables using paginate in the for loop and pagination controls -->
           <tr
             *ngFor="
               let item of data.orderHistory
@@ -130,7 +132,9 @@
   <div class="OrdersTable">
     <div class="d-flex justify-content-between align-items-center">
       <h1 class="mb-3">Past Transactions</h1>
-      <div class="viewAllButton" routerLink="/home/transactions">View All</div>
+      <div class="viewAllButton" routerLink="/home/transactions">
+        View All ->
+      </div>
     </div>
 
     <div class="table-responsive">

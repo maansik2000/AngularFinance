@@ -95,14 +95,15 @@ export class UserService {
     return this.http.get(this.BaseURI + '/UserProfile/GetUserProfile');
   }
 
+  //method for checking if the user is authorized for any router or not
   roleMatch(allowedRoles): boolean {
     var isMatch = false;
     var payload = JSON.parse(
       window.atob(localStorage.getItem('token').split('.')[1])
     );
     var userRole = payload.role;
-    allowedRoles.forEach((element) => {
-      if (userRole == element) {
+    allowedRoles.forEach((element) => { 
+      if (userRole == element) {                //matching every roles from the routing module with the role in token from backend
         isMatch = true;
         return false;
       }
@@ -110,6 +111,7 @@ export class UserService {
     return isMatch;
   }
 
+  //method for submitting joining fees
   postJoiningFees(id, form: NgForm) {
     return this.http.put(
       this.BaseURI + `/UserProfile/PostJoiningFees/${id}`,
@@ -117,6 +119,7 @@ export class UserService {
     );
   }
 
+  //method for forget password and accept the form as a parameter
   forgetPassword(form) {
     return this.http.post(
       this.BaseURI + `/User/forgetPassword?email=${form.email}`,
@@ -124,6 +127,7 @@ export class UserService {
     );
   }
 
+  //method for reset password and accept a token
   resetPassword(token) {
     var body = {
       email: this.formModelReset.value.Email,

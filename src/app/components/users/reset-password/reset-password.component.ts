@@ -22,7 +22,7 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit() {
     this.service.formModelReset.reset();
     this.router.queryParams.subscribe((params) => {
-      console.log(params); // { orderby: "price" }
+      console.log(params);              // getting token from the url
       this.token = params.token;
     });
   }

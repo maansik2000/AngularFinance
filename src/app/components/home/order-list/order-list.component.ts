@@ -35,6 +35,7 @@ export class OrderListComponent implements OnInit {
   
   }
 
+  //filtering the data as per the search value
   SearchUser() {
     if (this.searchUserValue == '') {
       this.ngOnInit();
