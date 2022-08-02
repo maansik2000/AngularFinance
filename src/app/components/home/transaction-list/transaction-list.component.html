@@ -17,7 +17,7 @@
   <div>
     <div
       *ngFor="
-        let item of data.transactionHistory
+        let item of sorted
           | paginate: { itemsPerPage: 5, currentPage: paginationNumber2 }
       "
     >
@@ -30,10 +30,13 @@
         </div>
         <h6>
           Transaction Date :
+
           {{
-            item.transactionDate.substring(
-              0,
-              item.transactionDate.indexOf("T") + 0
+            this.service.getFormat(
+              item.transactionDate.substring(
+                0,
+                item.transactionDate.indexOf("T") + 0
+              )
             )
           }}
         </h6>

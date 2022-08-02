@@ -152,7 +152,11 @@
             <td>{{ item.username }}</td>
             <td>{{ item.isActivated ? "Activated" : "Not Activated" }}</td>
             <td>
-              {{ item.createdAt.substring(0, item.createdAt.indexOf("T") + 0) }}
+              {{
+                this.service.getFormat(
+                  item.createdAt.substring(0, item.createdAt.indexOf("T") + 0)
+                )
+              }}
             </td>
             <td>
               {{
