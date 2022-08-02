@@ -35,6 +35,7 @@ export class AdminCreateComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.service.AddAdmin(form).subscribe(
       (res: any) => {
+        this.router.navigateByUrl('/admin/dashboard');
         this.toastr.success('Successfully created Admin User');
       },
       (err) => {

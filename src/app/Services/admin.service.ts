@@ -72,9 +72,9 @@ export class AdminService {
   AddAdmin(form) {
     var body = {
       username: form.value.username,
-      email: form.value.username,
-      password: form.value.username,
-      fullName: form.value.username,
+      email: form.value.email,
+      password: form.value.password,
+      fullName: form.value.fullName,
     };
     return this.http.post(this.BaseURI + `/Admin/Signup/`, body);
   }
@@ -84,6 +84,4 @@ export class AdminService {
     moment.locale('en');
     return moment(date).format('LL');
   }
-
-  
 }
