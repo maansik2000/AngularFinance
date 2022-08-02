@@ -33,11 +33,7 @@ export class EmiPendingListComponent implements OnInit {
     this.service.getUserDashboardDetails().subscribe(
       (res: UserDashboardModel) => {
         this.data = res;
-        this.sorted = this.data.orderHistory.sort(
-          (objA, objB) =>
-            new Date(objB.orerCreatedAt).getTime() -
-            new Date(objA.orerCreatedAt).getTime()
-        );
+        this.sorted = this.service.sortOrderList(this.data.orderHistory);
       },
       (err) => {
         this.toastr.error(err.error.message);
