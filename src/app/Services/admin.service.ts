@@ -79,9 +79,11 @@ export class AdminService {
     return this.http.post(this.BaseURI + `/Admin/Signup/`, body);
   }
 
-  //format date
+  //format date using moment js
   getFormat(date) {
     moment.locale('en');
     return moment(date).format('LL');
   }
+
+  
 }

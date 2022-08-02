@@ -53,6 +53,7 @@ export class UserService {
     ),
   });
 
+  //method for comparing passwrod
   comparePasswords(fb: FormGroup) {
     let confirmPswrdCtrl = fb.get('ConfirmPassword');
     //passwordMismatch
@@ -67,6 +68,7 @@ export class UserService {
     }
   }
 
+  //method of register
   register() {
     var body = {
       username: this.formModel.value.UserName,
@@ -85,10 +87,12 @@ export class UserService {
     return this.http.post(this.BaseURI + '/User/Register', body);
   }
 
+  //method of login 
   login(formData) {
     return this.http.post(this.BaseURI + '/User/Login', formData);
   }
 
+  //method for getting userProfile
   getUserProfile() {
     // var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('token')});
     // return this.http.get(this.BaseURI + '/UserProfile', {headers : tokenHeader});

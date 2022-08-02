@@ -39,7 +39,7 @@ export class UserPortalService {
     );
   }
 
-  //sort the array
+  //sort the array on the basis of date
   sortList(data) {
     return data.sort(
       (objA, objB) =>
@@ -48,7 +48,7 @@ export class UserPortalService {
     );
   }
 
-  //sort list
+  //sort list on the basis of date
   sortOrderList(data) {
     return data.sort(
       (objA, objB) =>
@@ -57,7 +57,7 @@ export class UserPortalService {
     );
   }
 
-  //format date
+  //format date using moment js
   getFormat(date) {
     moment.locale('en');
     return moment(date).format('LL');
