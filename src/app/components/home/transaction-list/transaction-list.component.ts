@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { UserDashboardModel } from 'src/app/models/user-dashboard-model';
+import {
+  TransactionHistory,
+  UserDashboardModel,
+} from 'src/app/models/user-dashboard-model';
 import { UserPortalService } from 'src/app/Services/user-portal.service';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 @Component({
   selector: 'app-transaction-list',
@@ -14,6 +19,9 @@ export class TransactionListComponent implements OnInit {
   searchUserValue: string;
   paginationNumber2: number = 1;
   data: UserDashboardModel;
+  sorted: TransactionHistory[];
+
+  moment = moment();
 
   constructor(
     private router: Router,
@@ -21,10 +29,12 @@ export class TransactionListComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
+
   ngOnInit() {
     this.service.getUserDashboardDetails().subscribe(
       (res: UserDashboardModel) => {
         this.data = res;
+        this.sorted = this.service.sortList(this.data.transactionHistory);
       },
       (err) => {
         this.toastr.error(err.error.message);

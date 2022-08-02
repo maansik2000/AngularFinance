@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
-import { UserDashboardModel } from 'src/app/models/user-dashboard-model';
+import {
+  orderHistory,
+  UserDashboardModel,
+} from 'src/app/models/user-dashboard-model';
 import { UserPortalService } from 'src/app/Services/user-portal.service';
 
 @Component({
@@ -18,6 +21,7 @@ export class EmiPendingListComponent implements OnInit {
   moment = moment;
   date = new Date();
   currentDate = moment(this.date).format('YYYY-MM-DD');
+  sorted: orderHistory[];
 
   constructor(
     private router: Router,
@@ -29,6 +33,11 @@ export class EmiPendingListComponent implements OnInit {
     this.service.getUserDashboardDetails().subscribe(
       (res: UserDashboardModel) => {
         this.data = res;
+        this.sorted = this.data.orderHistory.sort(
+          (objA, objB) =>
+            new Date(objB.orerCreatedAt).getTime() -
+            new Date(objA.orerCreatedAt).getTime()
+        );
       },
       (err) => {
         this.toastr.error(err.error.message);

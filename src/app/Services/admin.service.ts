@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserData } from '../models/User-data';
 import { UserDetailsModel } from '../models/user-details-model';
-
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 @Injectable({
   providedIn: 'root',
 })
@@ -77,4 +78,12 @@ export class AdminService {
     };
     return this.http.post(this.BaseURI + `/Admin/Signup/`, body);
   }
+
+  //format date using moment js
+  getFormat(date) {
+    moment.locale('en');
+    return moment(date).format('LL');
+  }
+
+  
 }

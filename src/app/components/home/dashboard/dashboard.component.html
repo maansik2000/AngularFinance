@@ -107,7 +107,7 @@
           <!-- adding pagination in the tables using paginate in the for loop and pagination controls -->
           <tr
             *ngFor="
-              let item of data.orderHistory
+              let item of SortedOrder
                 | paginate: { itemsPerPage: 3, currentPage: paginationNumber1 }
             "
           >
@@ -115,9 +115,11 @@
             <td>{{ item.productName }}</td>
             <td>
               {{
-                item.orerCreatedAt.substring(
-                  0,
-                  item.orerCreatedAt.indexOf("T") + 0
+                this.service.getFormat(
+                  item.orerCreatedAt.substring(
+                    0,
+                    item.orerCreatedAt.indexOf("T") + 0
+                  )
                 )
               }}
             </td>
@@ -151,7 +153,7 @@
         <tbody>
           <tr
             *ngFor="
-              let item of data.transactionHistory
+              let item of sorted
                 | paginate: { itemsPerPage: 3, currentPage: paginationNumber2 }
             "
           >
@@ -161,9 +163,11 @@
             <td>${{ item.amountPaid }}</td>
             <td>
               {{
-                item.transactionDate.substring(
-                  0,
-                  item.transactionDate.indexOf("T") + 0
+                this.service.getFormat(
+                  item.transactionDate.substring(
+                    0,
+                    item.transactionDate.indexOf("T") + 0
+                  )
                 )
               }}
             </td>
