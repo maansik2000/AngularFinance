@@ -29,7 +29,6 @@ export class TransactionListComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
-
   ngOnInit() {
     this.service.getUserDashboardDetails().subscribe(
       (res: UserDashboardModel) => {
@@ -48,13 +47,11 @@ export class TransactionListComponent implements OnInit {
     if (this.searchUserValue == '') {
       this.ngOnInit();
     } else {
-      this.data.transactionHistory = this.data.transactionHistory.filter(
-        (res) => {
-          return res.productName
-            .toLocaleLowerCase()
-            .match(this.searchUserValue.toLocaleLowerCase());
-        }
-      );
+      this.sorted = this.sorted.filter((res) => {
+        return res.productName
+          .toLocaleLowerCase()
+          .match(this.searchUserValue.toLocaleLowerCase());
+      });
     }
   }
 }

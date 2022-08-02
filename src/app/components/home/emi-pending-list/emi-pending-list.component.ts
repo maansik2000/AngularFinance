@@ -46,7 +46,7 @@ export class EmiPendingListComponent implements OnInit {
     if (this.searchUserValue == '') {
       this.ngOnInit();
     } else {
-      this.data.orderHistory = this.data.orderHistory.filter((res) => {
+      this.sorted = this.sorted.filter((res) => {
         return res.productName
           .toLocaleLowerCase()
           .match(this.searchUserValue.toLocaleLowerCase());
